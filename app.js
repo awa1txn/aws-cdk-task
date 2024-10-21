@@ -4,11 +4,11 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.get('/', (req, res) => {
-    res.json({ message: 'Hello, World!' });
+    res.send('<h1>{ message: "Hello, World!" }</h1>');
 });
 
 app.get('/health', (req, res) => {
-    res.json({ status: 'healthy' });
+    res.send('<h1>{ status: "healthy" }</h1>');
 });
 
 app.listen(port, () => {
