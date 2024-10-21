@@ -22,6 +22,8 @@ jobs:
       - name: Test webapp functionality
         run: docker ps
       - name: Test webapp functionality
+        run: docker logs ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
+      - name: Test webapp functionality
         run: curl localhost:8080
         # uses: cypress-io/github-action@v6
         # env:
