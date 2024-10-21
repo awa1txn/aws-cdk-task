@@ -1,0 +1,67 @@
+name: Continious Integration & Continious Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+#integration
+      - name: docker build
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest .
+
+#tests
+      - name: docker run app
+        run: docker run ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
+
+      - name: Test webapp functionality
+        uses: cypress-io/github-action@v6
+        env:
+          CYPRESS_BASE_URL: http://localhost:8080
+        with:
+          working-directory: ./.github/tests
+
+
+#docker push
+      # - name: docker authorisation
+      #   run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ DOCKER_PASSWORD }}
+
+      # - name: docker push
+      #   run: docker push ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
+
+
+
+
+
+
+
+
+
+
+
+
+
+#deployment
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '20'
+
+      # - name: Install dependencies
+      #   run: npm ci
+
+      # - name: Install AWS CDK
+      #   run: npm install -g aws-cdk
+
+      # - name: Deploy to AWS
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_DEFAULT_REGION: 'us-west-2'
+      #   run: cdk deploy --require-approval never

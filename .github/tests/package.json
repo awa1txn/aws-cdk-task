@@ -1,0 +1,11 @@
+{
+    "name": "tests",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {},
+    "author": "awa1txn",
+    "license": "ISC",
+    "devDependencies": {
+        "cypress": "^12.17.4"
+    }
+}
