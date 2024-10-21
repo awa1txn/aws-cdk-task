@@ -11,6 +11,6 @@ app.get('/health', (req, res) => {
     res.send('<h1>{ status: "healthy" }</h1>');
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running at PORT: ${port}`);
 });
