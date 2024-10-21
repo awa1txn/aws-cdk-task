@@ -22,7 +22,7 @@ jobs:
 
 #tests
       - name: docker run app
-        run: docker run --name aws -d -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/aws-app-runner:latest
+        run: docker run --name aws -d -p 8080:8080 -b 0.0.0.0:8000 ${{ secrets.DOCKER_USERNAME }}/aws-app-runner:latest
 
       - name: Test webapp functionality
         run: docker ps
