@@ -15,11 +15,11 @@ jobs:
 
 #integration
       - name: docker build
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/aws-app-runner:latest .
 
 #tests
       - name: docker run app
-        run: docker run --name aws -d -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
+        run: docker run --name aws -d -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/aws-app-runner:latest
 
       - name: Test webapp functionality
         run: docker ps
@@ -36,7 +36,7 @@ jobs:
       #   run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ DOCKER_PASSWORD }}
 
       # - name: docker push
-      #   run: docker push ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
+      #   run: docker push ${{ secrets.DOCKER_USERNAME }}/aws-app-runner:latest
 
 
 
