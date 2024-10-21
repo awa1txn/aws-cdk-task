@@ -20,7 +20,7 @@ export class MyCdkAppStack extends cdk.Stack {
       cluster,
       taskImageOptions: {
         image: ecs.ContainerImage.fromRegistry('node:16'), // Use your Node.js Docker image
-        containerPort: 3000, // The port your app listens on
+        containerPort: 8080, // The port your app listens on
       },
     });
 

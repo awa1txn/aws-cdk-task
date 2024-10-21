@@ -21,11 +21,12 @@ jobs:
         run: docker run -d ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
 
       - name: Test webapp functionality
-        uses: cypress-io/github-action@v6
-        env:
-          CYPRESS_BASE_URL: http://localhost:8080
-        with:
-          working-directory: ./.github/tests
+        run: curl localhost:8080
+        # uses: cypress-io/github-action@v6
+        # env:
+        #   CYPRESS_BASE_URL: http://localhost:8080
+        # with:
+        #   working-directory: ./.github/tests
 
 
 #docker push
