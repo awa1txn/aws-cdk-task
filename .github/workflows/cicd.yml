@@ -18,7 +18,7 @@ jobs:
 
 #tests
       - name: docker run app
-        run: docker run ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest -d
+        run: docker run -d ${{ secrets.DOCKER_USERNAME }}/aws-cdk-runner:latest
 
       - name: Test webapp functionality
         uses: cypress-io/github-action@v6
